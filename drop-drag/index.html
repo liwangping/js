@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: #bbb;
+        }
+    </style>
+</head>
+<body>
+    <div class="" id="box">
+
+    </div>
+    <script>
+        const box = document.getElementById('box');
+        let cur = {
+            x: 0,
+            y: 0,
+            dx: 0,//保存上次box的所在位置.x
+            dy: 0//保存上次box的所在位置.y
+        }
+        let drag = false;
+        // box.addEventListener('mousedown',function(event) {
+        //     drag = true;
+        //     cur.x = event.clientX;
+        //     cur.y = event.clientY;
+        //     cur.dx = box.offsetLeft;
+        //     cur.dy = box.offsetTop;
+        //     console.log('mousedown');
+        // })//鼠标在目标的上方按下
+        // box.addEventListener('mousemove',function(event) {
+        //     console.log('mousemove');
+        //     if(!drag) return;
+        //     box.style.left = `${event.clientX - cur.x + cur.dx}px`;
+        //     box.style.top = `${event.clientY -cur.y + cur.dy}px`;
+        // })//鼠标在目标的上方移动
+        // box.addEventListener('mouseup',function() {
+        //     console.log('mouseup');
+        //     drag = false;
+        // })//鼠标在目标的上方放开
+        // box.addEventListener('mouseleave',function() {
+        //     console.log('mouseleave');
+        //     drag = false;
+        // })//鼠标在目标的上方放开
+        
+
+        box.addEventListener('touchstart', start);
+        box.addEventListener('touchmove', move);
+        box.addEventListener('touchup', up);
+
+        function start(event) {
+            if(event.touches){
+                event = event.touches[0];
+            }
+            drag = true;
+            cur.x = event.clientX;
+            cur.y = event.clientY;
+            cur.dx = box.offsetLeft;
+            cur.dy = box.offsetTop;
+        }
+        function move(event) {
+            if(event.touches){
+                event = event.touches[0];
+            }
+            if(!drag) return;
+            box.style.left = `${event.clientX - cur.x + cur.dx}px`;
+            box.style.top = `${event.clientY -cur.y + cur.dy}px`;
+        }
+        function start(event) {
+            if(event.touches){
+                event = event.touches[0];
+            }
+            drag = true;
+            cur.x = event.clientX;
+            cur.y = event.clientY;
+            cur.dx = box.offsetLeft;
+            cur.dy = box.offsetTop;
+        }
+        function start(event) {
+            if(event.touches){
+                event = event.touches[0];
+            }
+            drag = true;
+            cur.x = event.clientX;
+            cur.y = event.clientY;
+            cur.dx = box.offsetLeft;
+            cur.dy = box.offsetTop;
+        }
+    </script>
+</body>
+</html>
